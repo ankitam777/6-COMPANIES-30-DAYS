@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int rev(int n){
+        int revs,digit;
+        revs=0;
+        while(n){
+            digit=n%10;
+            revs=(revs*10)+digit;
+            n=n/10;
+        }
+        return revs;
+    }
+    int countNicePairs(vector<int>& nums) {
+        int x=nums.size();
+        int m=1e9+7;
+        int c=0;
+        int res;
+        unordered_map<int,int>mp;
+        for(int i=0;i<x;i++){
+            res=nums[i]-rev(nums[i]);
+            if(mp.count(res)==true){
+                c=(c+mp[res])%m;
+            }
+           mp[res]++;
+        }
+            
+        return c;
+       
+    }
+}
