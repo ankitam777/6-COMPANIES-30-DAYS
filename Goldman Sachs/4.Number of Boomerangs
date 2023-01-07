@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int numberOfBoomerangs(vector<vector<int>>& points) {
+        int n=points.size();
+        int c=0;
+        for(int i=0;i<n;i++){
+            map<int,int>m;
+            for(int j=0;j<n;j++){
+                int distance = pow((points[i][0]-points[j][0]),2) + pow((points[i][1]-points[j][1]),2);
+                m[distance]++;
+            }
+            for(auto i : m){
+                if(i.second) 
+                c=c+(i.second*(i.second-1));
+            }
+        }
+        return c;
+    }
+        
+    
+}
