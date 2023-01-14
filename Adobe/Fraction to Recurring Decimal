@@ -1,6 +1,8 @@
 //submission link:
 //https://leetcode.com/problems/fraction-to-recurring-decimal/submissions/877867477/
 
+//https://leetcode.com/problems/fraction-to-recurring-decimal/description/
+
 class Solution {
 public:
     string fractionToDecimal(int numerator, int denominator) {
