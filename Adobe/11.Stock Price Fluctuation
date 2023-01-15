@@ -1,0 +1,52 @@
+//Submission Link: https://leetcode.com/problems/stock-price-fluctuation/submissions/878780961/
+
+//https://leetcode.com/problems/stock-price-fluctuation/description/
+
+class StockPrice {
+public:
+    unordered_map<int,int>mp;
+    multiset<int>priceset;
+    int latest=INT_MIN;
+    StockPrice() {
+        
+    }
+    
+    void update(int timestamp, int price) {
+        if(mp.find(timestamp)!=mp.end()){
+            int previousprice=mp[timestamp];
+            priceset.erase(priceset.find(previousprice));
+        }
+        mp[timestamp]=price;
+        priceset.insert(price);
+
+        if(timestamp>latest){
+            latest=timestamp;
+        }
+
+    }
+    
+    int current() {
+        return mp[latest];
+
+        
+    }
+    
+    int maximum() {
+        
+        return *priceset.rbegin();
+        
+    }
+    
+    int minimum() {
+        return *priceset.begin();
+    }
+};
+
+/**
+ * Your StockPrice object will be instantiated and called as such:
+ * StockPrice* obj = new StockPrice();
+ * obj->update(timestamp,price);
+ * int param_2 = obj->current();
+ * int param_3 = obj->maximum();
+ * int param_4 = obj->minimum();
+ */
